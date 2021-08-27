@@ -8,4 +8,4 @@ services:
       - '8586:8000'
     volumes:
       - ./app:/app
-    command: python3 bookos/manage.py runserver 0.0.0.0:8000
+    command: python3 bookos/manage.py runserver 0.0.0.0:8000 --settings=bookos.settings.Development

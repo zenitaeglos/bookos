@@ -1,1 +1,2 @@
 *.pyc
+app/bookos/bookos/settings/Production.py
