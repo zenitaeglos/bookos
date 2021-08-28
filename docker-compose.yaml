@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 
 services:
   app:
@@ -8,4 +8,18 @@ services:
       - '8586:8000'
     volumes:
       - ./app:/app
-    command: python3 bookos/manage.py runserver 0.0.0.0:8000 --settings=bookos.settings.Development
+    depends_on:
+      - db
+    command: sh -c "cd bookos && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000 --settings=bookos.settings.Development"
+
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=start12345
+      - POSTGRES_DB=database_development
+    ports:
+      - '5432:5432'
+    restart: always

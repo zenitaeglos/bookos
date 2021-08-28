@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'bookos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database_development',
+        'USER': 'admin',
+        'PASSWORD': 'start12345',
+        'HOST': 'db',
+        'PORT': '5432'
     }
 }
 

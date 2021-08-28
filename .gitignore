@@ -1,2 +1,3 @@
 *.pyc
 app/bookos/bookos/settings/Production.py
+postgres_data
